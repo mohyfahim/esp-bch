@@ -1,3 +1,8 @@
+#esp32
+examples/**/build/
+sdkconfig.old
+sdkconfig
+
 # Prerequisites
 *.d
 
