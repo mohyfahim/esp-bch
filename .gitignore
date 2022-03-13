@@ -2,7 +2,7 @@
 examples/**/build/
 sdkconfig.old
 sdkconfig
-
+.vscode
 # Prerequisites
 *.d
 

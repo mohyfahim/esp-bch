@@ -5,7 +5,7 @@
 #include "esp_log.h"
 #include <inttypes.h>
 #include "esp_timer.h"
-#include "esp_rom_md5.h"
+#include "mbedtls/sha256.h"
 
 static const char *TAG = "example";
 
@@ -62,14 +62,15 @@ void app_main(void)
     }
     printf("\n");
 
-    md5_context_t ctx;
-    uint8_t digest[16] = {0};
-    esp_rom_md5_init(&ctx);
-    esp_rom_md5_update(&ctx, err_data, 4);
-    esp_rom_md5_final(digest, &ctx);
-    for (int i = 0; i < 16; i++)
+    mbedtls_sha256_context sha256_ctx;
+    unsigned char sha256[32];
+    mbedtls_sha256_init(&sha256_ctx);
+    mbedtls_sha256_starts(&sha256_ctx, false);
+    mbedtls_sha256_update(&sha256_ctx, err_data, 4);
+    mbedtls_sha256_finish(&sha256_ctx, sha256);
+    for (int i = 0; i < 32; i++)
     {
-        printf("%u ", digest[i]);
+        printf("%u ", sha256[i]);
     }
     printf("\n");
     ESP_LOGW(TAG, "%lu", (long unsigned int)esp_timer_get_time() - t);
