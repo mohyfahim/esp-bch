@@ -8,7 +8,7 @@ if(NOT DEFINED BCH_PATH)
     set(BCH_PATH ${CMAKE_CURRENT_LIST_DIR}/../..)
 endif()
 
-set(EXTRA_COMPONENT_DIRS ${BCH_PATH}/components)
+set(EXTRA_COMPONENT_DIRS ${BCH_PATH})
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(get-started)
