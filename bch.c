@@ -65,7 +65,7 @@
  * finite fields GF(2^q). In Rapport de recherche INRIA no 2829, 1996.
  */
 
-#include "bch.h"
+#include "esp_bch.h"
 #include "esp_heap_caps.h"
 #include "esp_log.h"
 #include <errno.h>
